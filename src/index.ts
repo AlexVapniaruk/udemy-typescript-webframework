@@ -1,10 +1,11 @@
-import axios from 'axios';
+import { UserForm } from "./views/UserForm";
 import { User } from './models/User';
 
-const user = new User({id: 1, name: 'new nam2e', age: 311 });
+const user = User.buildUser({ name: 'Name', age: 20 });
 
-user.on('change', () => {
-    console.log(user);
-})
+const userForm = new UserForm(
+    document.getElementById('root'),
+    user
+);
 
-user.save()
+userForm.render();
